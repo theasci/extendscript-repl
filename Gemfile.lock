@@ -1,0 +1,18 @@
+GIT
+  remote: https://github.com/theasci/ask-act
+  revision: eb8dd1d5634f915ba0c50e5dbf3ad962f4f5aff4
+  specs:
+    ask_act (0.0.1)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  ask_act!
+
+BUNDLED WITH
+   2.0.2
