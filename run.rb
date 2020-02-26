@@ -13,19 +13,24 @@ To quit, type 'quit' or 'exit' or 'stop'.
 HELP
 end
 
-APP = ($1 || 'indesign').strip.downcase
+APP = (ARGV[0] || 'indesign').strip.downcase
+
+# Contains the javascript method to execute extendscript
+APPS = {
+	'indesign' => 'doScript',
+	'photoshop' => 'doJavascript',
+}
 
 puts <<PREFACE
 ExtendScript REPL - #{APP}
 Type 'help' to get started.
-
 PREFACE
-AskAct.new
+
+repl = AskAct.new
 	.ask { Readline.readline("jsx> ", true) }
-	.act do |command|
-		system "osascript -l 'JavaScript' -e \"var app = new Application('com.adobe.#{APP}'); app.doScript('#{command}', {language: 'javascript'});\""
-	end
 	.on('help', 'Show useful help text') { |loop| help }
-	.on('app', 'Display the application we are executing extendscript in') { |loop| puts APP }
+	repl.act do |command|
+		system "osascript -l 'JavaScript' -e \"var app = new Application('com.adobe.#{APP}'); app.#{APPS[APP]}('#{command}', {language: 'javascript'});\""
+	end
 	.rescue(Interrupt) { |loop| puts; loop.next } # ^C
 	.run
