@@ -30,7 +30,8 @@ repl = AskAct.new
 	.ask { Readline.readline("jsx> ", true) }
 	.on('help', 'Show useful help text') { |loop| help }
 	repl.act do |command|
-		system "osascript -l 'JavaScript' -e \"var app = new Application('com.adobe.#{APP}'); app.#{APPS[APP]}('#{command}', {language: 'javascript'});\""
+		escaped = command.gsub(/['"]/,"\\\\'")
+		system %Q(osascript -l 'JavaScript' -e "var app = new Application('com.adobe.#{APP}'); app.#{APPS[APP]}('#{escaped}', {language: 'javascript'});")
 	end
 	.rescue(Interrupt) { |loop| puts; loop.next } # ^C
 	.run
