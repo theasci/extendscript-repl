@@ -14,7 +14,7 @@ Read-Eval-Print-Loop (REPL) for ExtendScript via Apple Javascript for Automation
 ```sh
 git clone https://github.com/theasci/extendscript-repl
 cd extendscript-repl
-bundle install
+./run.rb
 ```
 
 # run.rb
