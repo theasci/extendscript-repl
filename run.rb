@@ -8,7 +8,7 @@ def help
 	puts <<HELP
 USAGE: #{$0} <indesign|photoshop> (default is indesign)
 Type ExtendScript and hit Enter to execute. For instance:
-	app.properties.name
+	app.name
 Type 'list' to see available commands
 To quit, type 'quit' or 'exit' or 'stop'.
 HELP

@@ -41,7 +41,10 @@ Application("Adobe InDesign 2020").documents.byId(510).stories.byId(216)
 jsx> app.activeDocument.stories[0].texts.firstItem().toSpecifier()
 /document[@id=510]/story[0]/text[@location=first]
 ```
+
 # TODO
 
-1. Bootstrap file
-1. Session to handle variables already assigned
+1. Read a bootstrap file to load custom environment
+1. ExtendScript session to handle variables introduced
+1. History writes to a file so they exist beyond a single Session
+1. NPM package?
