@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'open3'
 require 'readline'
 require_relative './lib/ask_act.rb'
 
@@ -29,9 +30,12 @@ PREFACE
 repl = AskAct.new
 	.ask { Readline.readline("jsx> ", true) }
 	.on('help', 'Show useful help text') { |loop| help }
-	repl.act do |command|
+	.act do |command|
 		escaped = command.gsub(/['"]/,"\\\\'")
-		system %Q(osascript -l 'JavaScript' -e "var app = new Application('com.adobe.#{APP}'); app.#{APPS[APP]}('#{escaped}', {language: 'javascript'});")
+		jxa = %Q(osascript -l JavaScript -e "var app = new Application('com.adobe.#{APP}'); app.#{APPS[APP]}('#{escaped}', {language: 'javascript'});")
+		Open3.popen3(jxa) do |stdin, stdout, stderr, thread|
+			puts stdout.read.chomp.gsub("\r", "\r\n")
+		end
 	end
 	.rescue(Interrupt) { |loop| puts; loop.next } # ^C
 	.run

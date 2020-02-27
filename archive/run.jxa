@@ -1,0 +1,4 @@
+#!/usr/bin/env osascript -s s -l JavaScript
+
+var app = new Application('com.adobe.indesign');
+app.doScript('app.activeDocument.stories[0].contents', {language: 'javascript'});

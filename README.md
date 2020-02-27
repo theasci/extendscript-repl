@@ -36,6 +36,10 @@ jsx> app.properties.name
 Adobe InDesign
 jsx> app.properties.version
 15.0.1.209
+jsx> app.activeDocument.stories[0].texts.firstItem()
+Application("Adobe InDesign 2020").documents.byId(510).stories.byId(216)
+jsx> app.activeDocument.stories[0].texts.firstItem().toSpecifier()
+/document[@id=510]/story[0]/text[@location=first]
 ```
 # TODO
 
