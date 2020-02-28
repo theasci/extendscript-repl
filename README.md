@@ -14,13 +14,13 @@ Read-Eval-Print-Loop (REPL) for ExtendScript via Apple Javascript for Automation
 ```sh
 git clone https://github.com/theasci/extendscript-repl
 cd extendscript-repl
-./run.rb
+./run.rb -h
 ```
 
 # run.rb
 
 ```sh
-me@host$ ./run.rb photoshop
+me@host$ ./run.rb -a photoshop
 ExtendScript REPL - photoshop
 Type 'help' to get started.
 jsx> app.name
@@ -29,7 +29,7 @@ jsx> app.version
 21.0.3
 jsx> exit
 
-me@host$ ./run.rb indesign
+me@host$ ./run.rb -a indesign
 ExtendScript REPL - indesign
 Type 'help' to get started.
 jsx> app.properties.name
@@ -40,11 +40,24 @@ jsx> app.activeDocument.stories[0].texts.firstItem()
 Application("Adobe InDesign 2020").documents.byId(510).stories.byId(216)
 jsx> app.activeDocument.stories[0].texts.firstItem().toSpecifier()
 /document[@id=510]/story[0]/text[@location=first]
+jsx> quit
+
+me@host$ ./run.rb -b lib/bootstrap.jsx
+jsx> rootPath
+Path("/Users/user/projects/extendscript-repl/lib")
 ```
+
+# NPM Release Tasks
+
+1. Update `package.json` version number
+1. `npm install` to update package lock.
+1. Ensure tests pass: `npm test`
+1. Update `CHANGELOG.md` with changes since last release.
+1. Check them all into the repository.
+1. `git tag -a <version> -m <version>; git push --tags`
+1. `npm publish` to deploy the release to npm.
 
 # TODO
 
-1. Read a bootstrap file to load custom environment
-1. ExtendScript session to handle variables introduced
+1. ExtendScript session to handle variables introduced. Not sure how this would be done.
 1. History writes to a file so they exist beyond a single Session
-1. NPM package?
