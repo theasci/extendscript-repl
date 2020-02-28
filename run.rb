@@ -43,7 +43,7 @@ To quit, type 'quit' or 'exit' or 'stop'.
 HELP
 	end
 	.act do |command|
-		escaped = command.gsub(/['"]/,"\\\\'")
+		escaped = command.gsub(/(['"\\])/,'\\\\\1')
 		
 		# build ExtendScript to send to application
 		jsx = "var app = new Application('com.adobe.#{appName}'); app.#{doMethod}('"

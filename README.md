@@ -63,6 +63,9 @@ jsx> rootPath
 Path("/Users/user/projects/extendscript-repl/lib")
 ```
 
+# Gotchas
+1. Backslashes (\\) need to be escaped. `jsx> 'test'.match(/\\w/)`
+
 # NPM Release Tasks
 
 1. Update `package.json` version number
@@ -77,3 +80,4 @@ Path("/Users/user/projects/extendscript-repl/lib")
 
 1. ExtendScript session to handle variables introduced. Not sure how this would be done.
 1. History writes to a file so they exist beyond a single Session
+1. Handle multiline commands
