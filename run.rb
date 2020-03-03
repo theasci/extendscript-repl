@@ -61,7 +61,7 @@ HELP
 		end
 	end
 	.rescue(Interrupt) do |loop| # ^C
-		puts "To quit, type 'quit' or 'exit' or 'stop'."
+		puts "\nTo quit, type 'quit' or 'exit' or 'stop'."
 		loop.next
 	end
 	.run
