@@ -12,6 +12,7 @@ Read-Eval-Print-Loop (REPL) for ExtendScript via Apple Javascript for Automation
 # Installation
 
 **Clone and use directly**
+
 ```sh
 git clone https://github.com/theasci/extendscript-repl
 cd extendscript-repl
@@ -19,6 +20,7 @@ cd extendscript-repl
 ```
 
 **Deveopment Dependency**
+
 Or, add as development dependency in your `package.json` file.
 ```json
 "devDependencies": {
@@ -27,6 +29,7 @@ Or, add as development dependency in your `package.json` file.
 ```
 
 Then install with `npm install`. You should now be able to create a script (`repl.sh`) that loads your bootstrap JSX if desired.
+
 ```sh
 #!/bin/bash
 DIRECTORY=$(cd `dirname $0` && pwd)
@@ -59,8 +62,10 @@ jsx> app.activeDocument.stories[0].texts.firstItem().toSpecifier()
 jsx> quit
 
 me@host$ ./run.rb -b lib/bootstrap.jsx
-jsx> rootPath
-Path("/Users/user/projects/extendscript-repl/lib")
+jsx> Global.toSource()
+({rootPath:new Folder ("~/projects/extendscript-repl")})
+jsx> Global.rootPath
+Path("/Users/me/projects/extendscript-repl")
 ```
 
 # Gotchas
