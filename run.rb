@@ -44,13 +44,13 @@ HELP
 	end
 	.act do |command|
 		escaped = command.gsub(/(['"\\])/,'\\\\\1')
+		bootstrapCode = bootstrapFile ? "$.evalFile(\\'#{bootstrapFile}\\');" : ''
 		
 		# build ExtendScript to send to application
-		jsx = "var app = new Application('com.adobe.#{appName}'); app.#{doMethod}('"
-		if bootstrapFile
-			jsx += "$.evalFile(\\'#{bootstrapFile}\\');"
-		end
-		jsx += "#{escaped};', {language: 'javascript'});"
+		jsx = %Q[
+var app = new Application('com.adobe.#{appName}');
+app.#{doMethod}('#{bootstrapCode} #{escaped};', {language: 'javascript'});
+		]
 		
 		jxa = %Q(osascript -l JavaScript -e "#{jsx}")
 		Open3.popen3(jxa) do |stdin, stdout, stderr, thread|
