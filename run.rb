@@ -11,7 +11,6 @@ APPS = {
 	'photoshop' => 'doJavascript',
 }
 appName = 'indesign'
-doMethod = APPS[appName]
 bootstrapFile = nil
 
 OptionParser.new do |parser|
@@ -49,7 +48,7 @@ HELP
 		# build ExtendScript to send to application
 		jsx = %Q[
 var app = new Application('com.adobe.#{appName}');
-app.#{doMethod}('#{bootstrapCode} #{escaped};', {language: 'javascript'});
+app.#{APPS[appName]}('#{bootstrapCode} #{escaped};', {language: 'javascript'});
 		]
 		
 		jxa = %Q(osascript -l JavaScript -e "#{jsx}")
