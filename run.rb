@@ -9,6 +9,7 @@ require_relative './lib/ask_act.rb'
 APPS = {
 	'indesign' => 'doScript',
 	'photoshop' => 'doJavascript',
+	'illustrator' => 'doJavascript',
 }
 appName = 'indesign'
 doMethod = APPS[appName]
