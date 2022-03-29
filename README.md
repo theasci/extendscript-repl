@@ -5,7 +5,7 @@ Read-Eval-Print-Loop (REPL) for ExtendScript via Apple Javascript for Automation
 # Requirements
 
 1. macOS supporting [JavaScript for Automation](https://github.com/JXA-Cookbook/JXA-Cookbook/wiki)
-1. Valid license for [Adobe products that use ExtendScript](https://www.adobe.com/devnet/scripting.html). Currently supports Photoshop and InDesign.
+1. Valid license for [Adobe products that use ExtendScript](https://www.adobe.com/devnet/scripting.html). Currently supports Photoshop, Illustrator and InDesign.
 1. [Ruby](https://www.ruby-lang.org/en/)
 1. [Handy ExtendScript reference](http://jongware.mit.edu/idcs6js)
 
